@@ -1,13 +1,13 @@
 ## 📚 Process to select a "Research topic"
 ```mermaid
-graph TD
-    A[Start] --> B[1. Identify Top-Tier NLP Conferences]
-    B --> C[2. Review Conference Proceedings]
-    C --> D[3. Identify Research Trends]
-    D --> E[4. Narrow Down Your Interests]
-    E --> F[5. Conduct a Literature Review]
-    F --> G[6. Consult with Advisors and Peers]
-    G --> H[7. Finalize Your Research Topic]
+flowchart TD
+    A[Start] --> B[1.Identify Top-Tier NLP Conferences]
+    B --> C[2.Review Conference Proceedings]
+    C --> D[3.Identify Research Trends]
+    D --> E[4.Narrow Down Your Interests]
+    E --> F[5.Conduct a Literature Review]
+    F --> G[6.Consult with Advisors and Peers]
+    G --> H[7.Finalize Your Research Topic]
     H --> I[End]
 ```
 **1. Identify Top-Tier NLP Conferences**
