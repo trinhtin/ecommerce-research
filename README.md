@@ -179,3 +179,5 @@ Microsoft team produces other courses! Check out:
 groq
 
 http://www.wikicfp.com/cfp/
+
+https://www.deeplearning.ai/courses/
