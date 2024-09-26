@@ -183,3 +183,7 @@ http://www.wikicfp.com/cfp/
 https://www.deeplearning.ai/courses/
 
 https://paperswithcode.com/
+
+## Evaluation metrics
+https://ollama.com/library/llama3.2
+https://paperswithcode.com/paper/the-llama-3-herd-of-models
