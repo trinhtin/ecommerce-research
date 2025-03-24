@@ -1,4 +1,4 @@
-# Scroll to load more 
+# 1. Scroll to load more 
 
 Bạn có thể sử dụng sự kiện `scroll` trong jQuery để kiểm tra khi người dùng cuộn đến cuối trang và sau đó tải thêm dữ liệu. Dưới đây là cách làm:  
 
@@ -52,3 +52,43 @@ $(document).ready(function () {
 - Hiển thị/Ẩn biểu tượng loading để thông báo quá trình tải.
 
 Bạn có cần tối ưu hoặc thêm tính năng nào khác không? 🚀
+
+
+# 2. Rê chuột trong 10 giây nhận voucher giảm giá 15%
+
+Bạn có thể sử dụng jQuery để theo dõi khi người dùng di chuyển chuột trong 10 giây liên tục, sau đó hiển thị thông báo tặng voucher.  
+
+### ✨ **Cách hoạt động**:
+1. Khi người dùng di chuyển chuột (`mousemove`), một bộ đếm thời gian (`setTimeout`) được kích hoạt.
+2. Nếu họ tiếp tục di chuyển chuột trong 10 giây, hiển thị thông báo tặng voucher.
+3. Nếu người dùng dừng di chuyển chuột, bộ đếm sẽ bị hủy (`clearTimeout`).
+
+---
+
+### 📝 **Code jQuery**:
+```javascript
+$(document).ready(function () {
+    let timer;
+    let isVoucherGiven = false;
+
+    $(document).mousemove(function () {
+        if (!isVoucherGiven) {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                isVoucherGiven = true;
+                alert("🎉 Chúc mừng! Bạn nhận được voucher giảm giá 15%!");
+            }, 10000); // 10 giây
+        }
+    });
+});
+```
+
+---
+
+### 🎨 **Giải thích**:
+- **`mousemove`**: Kích hoạt mỗi khi chuột di chuyển.
+- **`setTimeout(10000)`**: Nếu chuột di chuyển liên tục trong 10 giây, hiển thị voucher.
+- **`clearTimeout(timer)`**: Nếu chuột ngừng di chuyển, hủy bộ đếm và đặt lại.
+- **`isVoucherGiven`**: Đảm bảo voucher chỉ hiển thị một lần.
+
+Bạn muốn hiển thị voucher dưới dạng pop-up hay có hiệu ứng gì đặc biệt không? 🚀
