@@ -1,3 +1,5 @@
+# Scroll to load more 
+
 Bạn có thể sử dụng sự kiện `scroll` trong jQuery để kiểm tra khi người dùng cuộn đến cuối trang và sau đó tải thêm dữ liệu. Dưới đây là cách làm:  
 
 ### Cách hoạt động:
