@@ -65,8 +65,8 @@ By following these steps, you can systematically select a research topic that is
   - [NeurIPS](https://dblp.uni-trier.de/db/conf/nips/neurips2023.html): Rank A*
   - [ICML](https://dblp.uni-trier.de/db/conf/icml/index.html): Rank A*
   - [ACL](https://dblp.uni-trier.de/db/conf/acl/index.html): Rank A*
-  - [AAAI](https://dblp.uni-trier.de/db/conf/aaai/aaai2024.html): Rank A* (divide into multiple tracks like Computer Vision, Education,...)
-  - [COLING](https://aclanthology.org/volumes/2024.lrec-main/): Rank B
+  - [AAAI](https://dblp.uni-trier.de/db/conf/aaai/aaai2025.html): Rank A* (divide into multiple tracks like Computer Vision, Education,...)
+  - [COLING](https://aclanthology.org/events/coling-2025/#2025coling-main): Rank B
 - Top Tier NLP Conferences List: (https://aclanthology.org/)
 - AI in Education:
   - [AIED](https://dblp.uni-trier.de/db/conf/aied/aied2023.html): Rank A
