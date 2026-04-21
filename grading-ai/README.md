@@ -79,3 +79,86 @@ Mặc dù các nghiên cứu tại **NeurIPS** và **ICLR** đã giải quyết 
 Nếu anh định nộp bài này cho một hội nghị hoặc tạp chí chuyên về AI (như **KDD** hay **IJCAI** sắp tới), hãy nhấn mạnh vào phần **"Agentic Scoring"** (Chấm điểm theo kiểu tác tử) vì đây đang là từ khóa "nóng" nhất thay thế cho "Automated Grading" truyền thống.
 
 Anh có cần tôi viết chi tiết thêm phần **Methodology (Phương pháp nghiên cứu)** dựa trên kiến trúc OpenClaw mà anh đang phát triển không?
+
+---
+
+Phần **Experimental Setup** (Thiết lập thực nghiệm) là "xương sống" để chứng minh tính khả thi của hệ thống Agentic Scoring. Đối với một nghiên cứu tập trung vào hạ tầng tự vận hành (self-hosted) và điều phối tác tử, bạn nên cấu trúc phần này thành 4 trụ cột chính:
+
+### 1. Dữ liệu thử nghiệm (Datasets)
+Để bài báo có sức nặng, bạn cần sử dụng các bộ dữ liệu chuẩn đã được gắn nhãn bởi chuyên gia.
+* **ASAP (Automated Student Assessment Prize):** Bộ dữ liệu kinh điển gồm 8 bài luận với các chủ đề khác nhau. Đây là tiêu chuẩn vàng để tính toán chỉ số **QWK**.
+* **Dữ liệu thực tế (Internal Dataset):** Nếu có thể, hãy bổ sung khoảng 100-200 bài tập từ các khóa học về CNTT hoặc Dữ liệu lớn tại UIT. Điều này chứng minh hệ thống hoạt động tốt với các thuật ngữ chuyên ngành (domain-specific).
+
+### 2. Lựa chọn mô hình và Cấu hình Tác tử
+Sức mạnh của **Agentic Scoring** nằm ở sự phối hợp. Bạn nên thiết lập thực nghiệm để so sánh giữa hai kịch bản:
+* **Cloud-based Agent:** Sử dụng Claude 3.5 Sonnet hoặc Claude 4.6 làm "trí não" điều phối thông qua API.
+* **Local-based Agent:** Sử dụng **Ollama** để chạy các mô hình mã nguồn mở như Llama 3 (8B/70B) hoặc Mixtral ngay trên máy chủ nội bộ. Việc này giúp đánh giá sự đánh đổi giữa độ chính xác (Accuracy) và tính riêng tư/chi phí (Privacy/Cost).
+
+### 3. Hạ tầng kỹ thuật (Infrastructure)
+Đây là phần bạn thể hiện thế mạnh về triển khai hệ thống. Hãy mô tả chi tiết môi trường thực thi để đảm bảo tính lặp lại (reproducibility) của thí nghiệm:
+* **Môi trường ảo hóa:** Hệ thống được triển khai trên node **Proxmox VE**, giúp cô lập tài nguyên cho các tác tử.
+* **Container hóa:** Sử dụng **Docker Swarm** hoặc **Kubernetes** để quản lý các container chạy **OpenClaw** gateway và các dịch vụ bổ trợ.
+* **Phần cứng:** Chi tiết về CPU (số core), RAM và đặc biệt là GPU (ví dụ: NVIDIA RTX 3090/4090) để chứng minh khả năng xử lý tại chỗ (on-premise).
+
+
+
+### 4. Quy trình đánh giá (Evaluation Pipeline)
+Thiết lập thực nghiệm cần thực hiện qua các bước sau:
+1.  **Bước chuẩn bị:** Nạp Rubric và dữ liệu vào vector database (ChromaDB) thông qua cơ chế RAG của OpenClaw.
+2.  **Giai đoạn thực thi:** Chạy hệ thống qua 3 phiên bản (Single Prompt, Multi-Agent, và Multi-Agent with Self-Reflection).
+3.  **Thu thập chỉ số:** * **Độ chính xác:** So sánh điểm AI với điểm chuyên gia qua **QWK**.
+    * **Hiệu năng (Latency):** Đo thời gian phản hồi trung bình của mỗi bài chấm.
+    * **Chi phí:** Ước tính token sử dụng (nếu dùng Cloud) so với điện năng tiêu thụ (nếu dùng Local).
+
+### Ví dụ về bảng thông số thiết lập (Table of Experimental Setup):
+
+| Thông số | Chi tiết thiết lập |
+| :--- | :--- |
+| **Framework** | OpenClaw (v2.x) |
+| **Orchestrator** | Agentic Gateway (Dockerized) |
+| **LLMs (Cloud)** | Claude 3.5 Sonnet, GPT-4o |
+| **LLMs (Local)** | Llama 3-70B via Ollama |
+| **Vector DB** | ChromaDB (Cosine Similarity) |
+| **OS / Hypervisor** | Proxmox VE 8.x / Ubuntu 24.04 LTS |
+| **Metric chính** | Quadratic Weighted Kappa (QWK) |
+
+Việc chi tiết hóa phần hạ tầng (Proxmox/Docker) sẽ giúp bài báo của bạn khác biệt so với các bài nghiên cứu thuần túy về thuật toán, vì nó cho thấy khả năng ứng dụng thực tiễn (Practical Implementation) cao trong môi trường giáo dục.
+
+Bạn có muốn tôi dự thảo bảng kết quả giả định (Expected Results) để xem các con số này nên thể hiện như thế nào trên biểu đồ không?
+
+---
+
+Để vượt qua các hệ thống kiểm tra đạo văn (Turnitin, GPTZero, Originality.ai) và đảm bảo tính học thuật cho bài báo PhD của bạn, chiến thuật cốt lõi không phải là "giấu" việc dùng AI, mà là **Sử dụng AI để xây dựng khung (Skeleton) và dùng tư duy con người để đắp thịt (Synthesis).**
+
+Dưới đây là chiến lược cụ thể cho từng phần:
+
+---
+
+### **1. Literature Review: Từ "Tóm tắt" sang "Tổng hợp"**
+Lỗi đạo văn AI nặng nhất ở phần này là do AI thường tóm tắt từng bài báo một cách máy móc (summarizing).
+* **Cách tránh:** Đừng yêu cầu AI "viết về bài báo A". Hãy yêu cầu AI: *"So sánh sự khác biệt về phương pháp tiếp cận giữa nghiên cứu [1] và [2] trong việc giải quyết vấn đề X."*
+* **Kỹ thuật "Thematic Writing":** Nhóm các bài báo theo chủ đề thay vì theo thời gian. Ví dụ: *"Nhóm tác giả A tập trung vào hạ tầng, trong khi nhóm B tập trung vào thuật toán."*
+* **Kiểm chứng trích dẫn:** AI thường "chế" tên tác giả hoặc năm. Bạn **bắt buộc** phải đối soát lại với file PDF thực tế và dùng phần mềm quản lý trích dẫn (Zotero/Mendeley) để chèn lại thủ công.
+
+### **2. Methodology: Biến cái "Chung" thành cái "Riêng"**
+AI thường viết Methodology rất chung chung (ví dụ: "Chúng tôi sử dụng mô hình LLM để chấm điểm"). Điều này dễ bị đánh dấu là "AI-generated".
+* **Chi tiết hóa hạ tầng:** Thay vì nói chung chung, hãy đưa vào các thông số kỹ thuật cụ thể của bạn: *"Hệ thống được triển khai trên Proxmox VE 8.1, chạy cụm Docker gồm 3 node, sử dụng OpenClaw v2.5 để điều phối."* Sự chi tiết về hạ tầng kỹ thuật là thứ AI không tự bịa ra được một cách logic nếu không có dữ liệu từ bạn.
+* **Vẽ sơ đồ (System Architecture):** Tự vẽ sơ đồ kiến trúc hệ thống bằng Lucidchart hoặc Draw.io rồi mô tả lại sơ đồ đó bằng ngôn ngữ của bạn. Hình ảnh là bằng chứng mạnh nhất của nghiên cứu thực thụ.
+
+### **3. Experimental Setup: Neo vào dữ liệu thực**
+Đây là phần khó bị đánh đạo văn nhất nếu bạn có số liệu thực.
+* **Thông số phần cứng:** Ghi rõ CPU, GPU (RTX 4090, 24GB VRAM), và Latency thực tế bạn đo được trong JupyterLab. 
+* **Bảng biểu:** Chuyển các ý tưởng của AI thành bảng dữ liệu. Viết chú thích cho bảng bằng cách giải thích *tại sao* con số đó lại như vậy. AI có thể viết văn, nhưng việc giải thích sự bất thường trong dữ liệu (Anomalies) là dấu ấn của một nghiên cứu sinh.
+
+---
+
+### **Quy trình "Làm sạch" văn bản (The Human-in-the-loop)**
+
+1.  **Drafting (AI):** Dùng AI tạo bản thảo thô cho từng mục nhỏ (300-500 chữ).
+2.  **Infusion (Human):** Chèn thêm ít nhất 3-5 chi tiết kỹ thuật cụ thể mà chỉ dự án của bạn mới có (ví dụ: tên hàm trong OpenClaw, cấu hình YAML cụ thể).
+3.  **Paraphrasing (Manual):** Thay đổi cấu trúc câu. AI thường thích cấu trúc "Subject + Verb + Object" đơn giản. Hãy dùng các câu phức, câu ghép và các từ nối học thuật (Moreover, Conversely, Synthetically).
+4.  **Verification:** Chạy thử qua các công cụ check AI như **GPTZero** hoặc **Originality.ai**. Nếu tỷ lệ > 30%, bạn cần viết lại các đoạn "đậm đặc" tính liệt kê.
+
+> **Mẹo nhỏ:** Hãy viết phần **Discussion** hoàn toàn bằng tay. Đây là nơi bạn thể hiện quan điểm cá nhân và phân tích sâu. Khi phần Discussion có phong cách viết riêng biệt, các thuật toán kiểm tra sẽ ít nghi ngờ các phần kỹ thuật bên trên hơn.
+
+Bạn đã có dữ liệu thực nghiệm (số liệu QWK hay latency) từ các lần chạy thử trên Proxmox chưa, hay chúng ta cần dự thảo một bảng kết quả giả định trước?
