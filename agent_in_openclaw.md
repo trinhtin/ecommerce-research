@@ -167,3 +167,434 @@ docker run -d \
 ```
 
 Hệ thống này sẽ giúp bạn tự động hóa hoàn toàn quy trình chấm điểm, đảm bảo tính khách quan nhờ sự phân tách vai trò rõ rệt giữa các Agent. Bạn có muốn điều chỉnh thêm tiêu chí chấm điểm cho Specialist nào không?
+
+
+--------------------
+
+# Cài đặt Multi-Agent với [CrewAI](https://www.crewai.com?utm_source=chatgpt.com)
+
+CrewAI là framework Python rất phổ biến để xây dựng hệ thống Multi-Agent theo kiểu:
+
+* Agent chuyên vai trò
+* Task-based workflow
+* Collaborative AI
+* Tool calling
+* Memory
+* Sequential / hierarchical process
+
+Rất phù hợp cho:
+
+* AI research assistant
+* SEO automation
+* E-commerce automation
+* AI teaching assistant
+* Report generation
+
+---
+
+# 1. Cài đặt Python
+
+Khuyên dùng:
+
+* Python 3.10 hoặc 3.11
+
+Kiểm tra:
+
+```bash
+python --version
+```
+
+---
+
+# 2. Tạo virtual environment
+
+## Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Linux/macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+# 3. Cài CrewAI
+
+```bash
+pip install crewai
+```
+
+Hoặc cài đầy đủ tool:
+
+```bash
+pip install 'crewai[tools]'
+```
+
+---
+
+# 4. Cài OpenAI SDK
+
+```bash
+pip install openai
+```
+
+---
+
+# 5. Thiết lập API Key
+
+## Windows CMD
+
+```bash
+set OPENAI_API_KEY=your_key
+```
+
+## PowerShell
+
+```powershell
+$env:OPENAI_API_KEY="your_key"
+```
+
+## Linux/macOS
+
+```bash
+export OPENAI_API_KEY=your_key
+```
+
+---
+
+# 6. Multi-Agent cơ bản
+
+Tạo file:
+
+```text
+main.py
+```
+
+---
+
+# 7. Ví dụ đơn giản: Research Agent + Writer Agent
+
+```python
+from crewai import Agent, Task, Crew, Process
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+# Agent 1
+researcher = Agent(
+    role="Researcher",
+    goal="Find information about AI agents",
+    backstory="Expert AI researcher",
+    verbose=True,
+    llm=llm
+)
+
+# Agent 2
+writer = Agent(
+    role="Writer",
+    goal="Write a clean report",
+    backstory="Professional technical writer",
+    verbose=True,
+    llm=llm
+)
+
+# Task 1
+research_task = Task(
+    description="Research latest trends of multi-agent systems",
+    expected_output="Bullet point research",
+    agent=researcher
+)
+
+# Task 2
+write_task = Task(
+    description="Write a report from research",
+    expected_output="Final markdown report",
+    agent=writer
+)
+
+# Crew
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, write_task],
+    process=Process.sequential,
+    verbose=True
+)
+
+result = crew.kickoff()
+
+print(result)
+```
+
+---
+
+# 8. Chạy hệ thống
+
+```bash
+python main.py
+```
+
+---
+
+# 9. Kiến trúc Multi-Agent trong CrewAI
+
+CrewAI thường dùng:
+
+```text id="x5brh5"
+Manager Agent
+    ↓
+Research Agent
+SEO Agent
+Pricing Agent
+Report Agent
+Coding Agent
+```
+
+---
+
+# 10. Các kiểu process
+
+## Sequential
+
+```python
+process=Process.sequential
+```
+
+Agent chạy tuần tự.
+
+---
+
+## Hierarchical
+
+```python
+process=Process.hierarchical
+```
+
+Có manager agent điều phối.
+
+Ví dụ:
+
+```python
+manager = Agent(
+    role="Project Manager",
+    goal="Coordinate all agents",
+    backstory="Expert manager"
+)
+
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[research_task, write_task],
+    manager_agent=manager,
+    process=Process.hierarchical
+)
+```
+
+---
+
+# 11. Tích hợp Tool
+
+Ví dụ search web:
+
+```bash
+pip install duckduckgo-search
+```
+
+```python
+from crewai_tools import SerperDevTool
+
+search_tool = SerperDevTool()
+
+researcher = Agent(
+    role="Researcher",
+    goal="Research AI",
+    tools=[search_tool],
+    verbose=True
+)
+```
+
+---
+
+# 12. Cài local model với Ollama
+
+Bạn từng dùng Ollama nên hướng này hợp.
+
+## Cài:
+
+[Ollama](https://ollama.com?utm_source=chatgpt.com)
+
+---
+
+## Pull model
+
+```bash
+ollama pull qwen3
+```
+
+Hoặc:
+
+```bash
+ollama pull llama3
+```
+
+---
+
+## CrewAI dùng Ollama
+
+```bash
+pip install langchain-ollama
+```
+
+```python
+from langchain_ollama import ChatOllama
+
+llm = ChatOllama(
+    model="qwen3"
+)
+```
+
+---
+
+# 13. Ví dụ kiến trúc TMĐT của bạn
+
+Bạn đang quan tâm:
+
+* SEO
+* pricing
+* scoring
+* automation
+
+CrewAI rất hợp kiểu này:
+
+```text id="hq5dzx"
+Supervisor Agent
+    ↓
+SEO Agent
+Pricing Agent
+Competitor Agent
+Report Agent
+```
+
+---
+
+# 14. Ví dụ flow thật
+
+```text id="6grm4f"
+Keyword input
+    ↓
+SEO Agent phân tích
+    ↓
+Competitor Agent crawl data
+    ↓
+Pricing Agent tối ưu giá
+    ↓
+Report Agent sinh báo cáo
+```
+
+Đây là hướng publish rất mạnh hiện nay cho:
+
+* Agentic SEO
+* E-commerce AI
+* Autonomous business agents
+
+---
+
+# 15. Tích hợp RAG
+
+CrewAI có thể kết hợp:
+
+* ChromaDB
+* FAISS
+* Qdrant
+* Milvus
+
+Ví dụ:
+
+```text id="25e8te"
+Agent
+   ↓
+Retriever
+   ↓
+Vector DB
+   ↓
+Knowledge Base
+```
+
+---
+
+# 16. Chạy bằng Docker
+
+Ví dụ nhanh:
+
+```dockerfile
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install crewai openai
+
+CMD ["python", "main.py"]
+```
+
+---
+
+# 17. Hướng production tốt hiện nay
+
+## Stack đề xuất
+
+```text id="vjlwm0"
+Frontend
+    ↓
+FastAPI
+    ↓
+CrewAI
+    ↓
+LLM APIs / Ollama
+    ↓
+Redis Memory
+    ↓
+Postgres
+```
+
+---
+
+# 18. Hạn chế của CrewAI
+
+CrewAI dễ dùng nhưng:
+
+* orchestration chưa mạnh bằng LangGraph
+* state machine chưa tốt
+* workflow graph hạn chế
+* debugging khó khi system lớn
+
+Cho nên:
+
+* prototype → CrewAI
+* production lớn → LangGraph
+
+---
+
+# 19. Nếu muốn nghiên cứu học thuật
+
+CrewAI rất phù hợp để publish:
+
+* collaborative agents
+* autonomous agents
+* role-based agents
+* AI orchestration
+* AI in E-commerce
+
+Đặc biệt phù hợp với các đề tài:
+
+* Agentic SEO
+* Pricing optimization
+* AI tutor
+* AI grading
+* RAG multi-agent systems
+
