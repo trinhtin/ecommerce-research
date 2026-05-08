@@ -598,3 +598,475 @@ CrewAI rất phù hợp để publish:
 * AI grading
 * RAG multi-agent systems
 
+-----------------
+# Cài đặt Multi-Agent với [LangGraph](https://www.langchain.com/langgraph?utm_source=chatgpt.com)
+
+LangGraph hiện là framework rất mạnh để xây dựng:
+
+* Multi-Agent Systems
+* Agent Orchestration
+* Stateful AI workflow
+* Human-in-the-loop
+* Long-running AI process
+
+Nó mạnh hơn CrewAI ở:
+
+* workflow graph
+* state management
+* checkpoint
+* retry
+* memory
+* orchestration production-grade
+
+Rất phù hợp với các hướng bạn đang quan tâm:
+
+* SEO automation agent
+* E-commerce AI
+* AI scoring system
+* RAG multi-agent
+* AI teaching assistant
+* BPMN + AI orchestration
+
+---
+
+# 1. Cài Python
+
+Khuyên dùng:
+
+* Python 3.10+
+* tốt nhất: 3.11
+
+Kiểm tra:
+
+```bash id="ubbdpq"
+python --version
+```
+
+---
+
+# 2. Tạo virtual environment
+
+## Windows
+
+```bash id="85h3yn"
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Linux/macOS
+
+```bash id="6ce0q5"
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+# 3. Cài LangGraph
+
+```bash id="0gx9e5"
+pip install langgraph
+```
+
+---
+
+# 4. Cài OpenAI integration
+
+```bash id="f6mif7"
+pip install langchain-openai
+```
+
+---
+
+# 5. Thiết lập API key
+
+## Windows CMD
+
+```bash id="x9u5a3"
+set OPENAI_API_KEY=your_key
+```
+
+## PowerShell
+
+```powershell id="4tq6mf"
+$env:OPENAI_API_KEY="your_key"
+```
+
+## Linux/macOS
+
+```bash id="q3ncl5"
+export OPENAI_API_KEY=your_key
+```
+
+---
+
+# 6. Multi-Agent cơ bản bằng LangGraph
+
+Tạo file:
+
+```text id="cbvljt"
+main.py
+```
+
+---
+
+# 7. Ví dụ đơn giản: Research Agent → Writer Agent
+
+```python id="t1nk8d"
+from typing import TypedDict
+from langgraph.graph import StateGraph, END
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+# Shared state
+class AgentState(TypedDict):
+    topic: str
+    research: str
+    report: str
+
+# Agent 1
+def researcher(state):
+    topic = state["topic"]
+
+    response = llm.invoke(
+        f"Research about: {topic}"
+    )
+
+    return {
+        "research": response.content
+    }
+
+# Agent 2
+def writer(state):
+    research = state["research"]
+
+    response = llm.invoke(
+        f"Write a report from this research:\n{research}"
+    )
+
+    return {
+        "report": response.content
+    }
+
+# Build graph
+workflow = StateGraph(AgentState)
+
+workflow.add_node("researcher", researcher)
+workflow.add_node("writer", writer)
+
+workflow.set_entry_point("researcher")
+
+workflow.add_edge("researcher", "writer")
+workflow.add_edge("writer", END)
+
+app = workflow.compile()
+
+result = app.invoke({
+    "topic": "Multi-Agent AI Systems"
+})
+
+print(result["report"])
+```
+
+---
+
+# 8. Chạy chương trình
+
+```bash id="8hpkxh"
+python main.py
+```
+
+---
+
+# 9. LangGraph hoạt động như thế nào
+
+Khác CrewAI:
+
+## CrewAI
+
+```text id="s3l2gk"
+Agent → Agent → Agent
+```
+
+## LangGraph
+
+```text id="7kgkgv"
+Node
+  ↓
+Conditional routing
+  ↓
+State update
+  ↓
+Next node
+```
+
+LangGraph giống:
+
+* workflow engine
+* state machine
+* orchestration system
+
+---
+
+# 10. Multi-Agent thật sự trong LangGraph
+
+Ví dụ:
+
+```text id="vzjlwm"
+Supervisor Agent
+    ↓
+SEO Agent
+Pricing Agent
+Crawler Agent
+Report Agent
+```
+
+---
+
+# 11. Ví dụ Supervisor Pattern
+
+```python id="b4h2o8"
+workflow.add_conditional_edges(
+    "supervisor",
+    router_function,
+    {
+        "seo": "seo_agent",
+        "pricing": "pricing_agent",
+        "report": "report_agent"
+    }
+)
+```
+
+Đây là architecture phổ biến nhất hiện nay.
+
+---
+
+# 12. Tích hợp Tool Calling
+
+```bash id="n9vrkn"
+pip install tavily-python
+```
+
+Ví dụ:
+
+```python id="r3dz90"
+from langchain.tools import Tool
+```
+
+Hoặc:
+
+* search web
+* crawl website
+* database
+* API
+* MCP tools
+
+---
+
+# 13. Dùng Ollama local model
+
+Bạn từng dùng Ollama nên rất hợp.
+
+## Cài:
+
+[Ollama](https://ollama.com?utm_source=chatgpt.com)
+
+---
+
+## Pull model
+
+```bash id="c0d9l6"
+ollama pull qwen3
+```
+
+---
+
+## LangGraph + Ollama
+
+```bash id="4h7vxv"
+pip install langchain-ollama
+```
+
+```python id="75t1eu"
+from langchain_ollama import ChatOllama
+
+llm = ChatOllama(
+    model="qwen3"
+)
+```
+
+---
+
+# 14. Thêm Memory
+
+LangGraph mạnh ở chỗ này.
+
+## Cài:
+
+```bash id="8v2l9w"
+pip install langgraph-checkpoint
+```
+
+Ví dụ:
+
+```python id="1x9f8s"
+from langgraph.checkpoint.memory import MemorySaver
+
+memory = MemorySaver()
+
+app = workflow.compile(
+    checkpointer=memory
+)
+```
+
+---
+
+# 15. Human-in-the-loop
+
+Ví dụ:
+
+```text id="5gcbup"
+Agent
+   ↓
+WAIT FOR HUMAN
+   ↓
+Continue
+```
+
+Rất mạnh cho:
+
+* approval workflow
+* AI grading
+* enterprise systems
+
+---
+
+# 16. Visualization graph
+
+```python id="tl3nhu"
+print(app.get_graph().draw_ascii())
+```
+
+Ví dụ:
+
+```text id="rb3z6g"
+researcher
+    ↓
+writer
+    ↓
+END
+```
+
+---
+
+# 17. Kiến trúc production tốt hiện nay
+
+## Stack đề xuất
+
+```text id="1dpc5j"
+Frontend
+    ↓
+FastAPI
+    ↓
+LangGraph
+    ↓
+OpenAI / Ollama
+    ↓
+Redis
+    ↓
+Postgres
+```
+
+---
+
+# 18. Tích hợp RAG
+
+Rất mạnh.
+
+## Stack phổ biến
+
+```text id="lpcp8u"
+LangGraph
+    ↓
+Retriever Agent
+    ↓
+Qdrant / ChromaDB
+    ↓
+Knowledge Base
+```
+
+---
+
+# 19. Kiến trúc TMĐT phù hợp với bạn
+
+Ví dụ:
+
+```text id="w4v7z7"
+Customer Query
+      ↓
+Supervisor Agent
+      ↓
+SEO Agent
+Pricing Agent
+Competitor Agent
+Recommendation Agent
+      ↓
+Report Agent
+```
+
+---
+
+# 20. LangGraph mạnh hơn CrewAI ở đâu
+
+| Feature             | CrewAI | LangGraph |
+| ------------------- | ------ | --------- |
+| Dễ học              | ✅      | ❌         |
+| Prototype nhanh     | ✅      | ⚠️        |
+| Workflow graph      | ⚠️     | ✅         |
+| State machine       | ❌      | ✅         |
+| Production scale    | ⚠️     | ✅         |
+| Memory              | ⚠️     | ✅         |
+| Retry               | ⚠️     | ✅         |
+| Human-in-loop       | ⚠️     | ✅         |
+| Conditional routing | ⚠️     | ✅         |
+
+---
+
+# 21. Khi nào nên dùng LangGraph
+
+## Nên dùng nếu:
+
+* nhiều agents
+* workflow phức tạp
+* cần state
+* production
+* orchestration
+* long-running AI
+
+## Không cần nếu:
+
+* demo nhỏ
+* prototype nhanh
+* ít workflow
+
+---
+
+# 22. Xu hướng 2026
+
+Hiện đa số hệ thống Agentic AI mạnh đang đi theo:
+
+```text id="t9n5gq"
+LangGraph
+    +
+MCP
+    +
+RAG
+    +
+Tool Ecosystem
+    +
+Supervisor Architecture
+```
+
+Đây gần như là "standard architecture" mới cho AI systems hiện nay.
+
