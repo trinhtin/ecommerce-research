@@ -2,7 +2,7 @@ Các kênh AI nên follow
 1. Andrew Ng (Nền tảng AI)
 2. Andrej Karpathy (Học trò của Fei-Fei Li) (Lý thuyết về AI chia sẻ theo ngôn ngữ đơn giản)
 3. Greg Isenberg (Ý tưởng khởi nghiệp trong thời đại AI)
-4. Matt Wolfe
+4. Matt Wolfe (AI News)
 5. AI Explained (Phân tích về các bài báo mới)
 
 ## 📚 Process to select a "Research topic"
