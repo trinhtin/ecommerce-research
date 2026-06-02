@@ -205,7 +205,7 @@ flowchart TD
     A[Start: Xác định hướng đi] --> B[1. Định vị Hội nghị & Tạp chí Top-tier]
     B --> C[2. Khai thác Kỷ yếu & Lưu trữ mở]
     C --> D[3. Đón đầu Xu hướng SOTA & Emerging Trends]
-    D --> E[4. Thu hẹp Không gian Nghiên cứu qua "Neo"]
+    D --> E[4. Thu hẹp Không gian Nghiên cứu qua 'Neo']
     E --> F[5. Xây dựng Matrix Tài liệu & Tìm Gap]
     F --> G[6. Tham vấn Chuyên gia & Phản biện Đồng nghiệp]
     G --> H[7. Đóng gói Đề cương & Khung Giả thuyết]
