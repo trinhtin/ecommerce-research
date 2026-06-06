@@ -547,3 +547,35 @@ Nền chắc thì cả khối công trình nghiên cứu mới đứng vững. P
 
 * Pautasso, M. (2013). Ten simple rules for writing a literature review. *PLOS Computational Biology*, 9(7), e1003149. https://doi.org/10.1371/journal.pcbi.1003149
 * Luft, J. A., Jeong, S., Idsardi, R., & Gardner, G. (2022). Literature reviews, theoretical frameworks, and conceptual frameworks: An introduction for new biology education researchers. *CBE—Life Sciences Education*, 21(3), rm1. https://doi.org/10.1187/cbe.21-05-0134
+
+------------
+# CÁCH NHẬN DIỆN NGUỒN TÀI LIỆU UY TÍN CHỈ TRONG 1 GIÂY TRÊN GOOGLE SCHOLAR
+
+Giữa hàng nghìn kết quả trên Google Scholar, làm sao biết nguồn nào đáng tin? **Rapid Journal Quality Check** giúp bạn kiểm tra chất lượng tạp chí ngay lập tức chỉ với một cú click.
+
+## 💡 Tiện ích này giải quyết bài toán gì cho sinh viên?
+
+Thông thường, để biết một bài báo có uy tín hay không, chúng ta phải copy tên tạp chí, tra cứu thủ công trên các bảng xếp hạng như SCImago,... Với công cụ này, các thông tin đánh giá chất lượng tạp chí được hiển thị trực quan ngay bên cạnh kết quả tìm kiếm trên Google Scholar, giúp bạn đánh giá nguồn tài liệu nhanh chóng hơn.
+
+* **Hiển thị thứ hạng (Rankings) tức thì:** Ngay bên cạnh mỗi bài báo, tiện ích sẽ hiện luôn phân hạng của tạp chí đó theo các hệ thống uy tín. Dù bạn làm ngành Tổng hợp (SJR, BFI), Kinh tế - Xã hội (ABDC, ABS, VHB, FT50) hay Khoa học máy tính (CORE, CCF), công cụ đều cân được hết.
+* **Check nhanh Chỉ số h-index:** Chỉ cần rê chuột vào thứ hạng, bạn sẽ thấy ngay tên đầy đủ của tạp chí và chỉ số h-index (chỉ số đo lường mức độ ảnh hưởng của các công bố khoa học). H-index càng cao chứng tỏ độ uy tín của nguồn càng lớn!
+* **Tra cứu chủ động:** Không chỉ hoạt động trên trang kết quả, bạn có thể click vào icon tiện ích, gõ tên một tạp chí bất kỳ để check rank ngay lập tức.
+
+## 🔬 Giữ vững tính học thuật nhưng tối ưu hóa tốc độ nghiên cứu
+
+Nhiều bạn lo lắng các công cụ tiện ích sẽ làm giảm tính nghiêm túc của nghiên cứu? Thực tế, **Rapid Journal Quality Check** hoạt động dựa trên việc đồng bộ hóa dữ liệu từ các API công khai của những tổ chức học thuật lớn nhất thế giới như Crossref, dblp, Australian Business Deans Council, và SCImago.
+
+Vì vậy, dữ liệu bạn nhận được hoàn toàn mang tính học thuật chính thống, giúp bạn xây dựng một danh mục tài liệu tham khảo “sạch” và nặng ký đối với hội đồng.
+
+## 🚀 Bắt đầu sử dụng chỉ trong 3 bước
+
+1. **B1:** Cài đặt tiện ích **Rapid Journal Quality Check** từ Chrome Web Store.
+2. **B2:** Trong phần cài đặt, chọn hệ thống xếp hạng phù hợp với lĩnh vực nghiên cứu của bạn (SJR, ABDC, AJG/ABS, CORE, CCF,...).
+3. **B3:** Truy cập **Google Scholar** và tìm kiếm tài liệu như bình thường. Thông tin phân hạng sẽ được hiển thị trực tiếp bên cạnh từng kết quả, giúp bạn đánh giá độ uy tín của nguồn chỉ trong vài giây.
+
+### Ví dụ về cách đọc xếp hạng:
+* **Q1:** Tạp chí thuộc nhóm chất lượng cao, thường được ưu tiên tham khảo và trích dẫn.
+* **Q2–Q3:** Chất lượng tốt, phù hợp với nhiều mục đích nghiên cứu học thuật.
+* **Không hiển thị xếp hạng:** Nên kiểm tra thêm thông tin về tạp chí hoặc nguồn xuất bản trước khi sử dụng.
+
+Nguồn: FB Thanh Tu (https://www.facebook.com/profile.php?id=61577393621414)
