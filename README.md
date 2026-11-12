@@ -1,3 +1,6 @@
+
+https://www.amazon.science/
+
 ## Các hội nghị và tạp chí hàng đầu về mô hình ngôn ngữ nhỏ (Small Language Models - SLM) chạy trên thiết bị biên, máy cá nhân và IoT bao gồm tinyML / Edge AI Foundation, IEEE Transactions on Computers, và ACM Computing Surveys.
 
 ### Hội nghị khoa học tiêu biểu
