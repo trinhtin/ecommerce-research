@@ -1,10 +1,10 @@
-Dưới đây là các trang thông tin nghiên cứu (research portals) hàng đầu của các tập đoàn công nghệ lớn, nơi thường xuyên công bố các paper, bộ dữ liệu, và mã nguồn mới nhất về Khoa học Máy tính, Trí tuệ Nhân tạo, và Hệ thống Thông tin:
+Research portals hàng đầu của các tập đoàn công nghệ lớn, nơi thường xuyên công bố các paper, bộ dữ liệu, và mã nguồn mới nhất về Khoa học Máy tính, Trí tuệ Nhân tạo, và Hệ thống Thông tin:
 
-* **Google Research & Google DeepMind** (`research.google` / `deepmind.google/research`)
+**Google Research & Google DeepMind** (`research.google` / `deepmind.google/research`)
 * Đi đầu trong việc công bố các kiến trúc cốt lõi của AI, Agentic AI, và Large Language Models (LLMs). Cổng thông tin này cung cấp quyền truy cập vào các bài báo học thuật, công cụ mã nguồn mở và các bộ dữ liệu quy mô lớn.
 
 
-* **Meta Research (FAIR - Fundamental AI Research)** (`[ai.meta.com/research/](https://ai.meta.com/research/)`)
+**Meta Research (FAIR - Fundamental AI Research)** (`[ai.meta.com/research/](https://ai.meta.com/research/)`)
 * Rất mạnh về văn hóa mã nguồn mở. Đây là nơi xuất bản các nghiên cứu xoay quanh dòng mô hình Llama, PyTorch, thị giác máy tính và các kỹ thuật tối ưu hóa AI có tính ứng dụng cao.
 
 
