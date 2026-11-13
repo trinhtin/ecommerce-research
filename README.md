@@ -18,7 +18,7 @@ Research portals hàng đầu của các tập đoàn công nghệ lớn, nơi t
 
 **Amazon Science** (`amazon.science`)
 * Đặc biệt giá trị cho các nghiên cứu giao thoa giữa AI và Thương mại điện tử. Trang này tập trung nhiều vào các bài báo về hệ thống gợi ý (recommendation systems), xử lý ngôn ngữ tự nhiên cho tìm kiếm sản phẩm, chuỗi cung ứng, và Big Data analytics.
-
+https://www.amazon.science/research-awards/call-for-proposals
 
 **Apple Machine Learning Research** (`machinelearning.apple.com`)
 * Tập trung vào các mô hình AI chạy cục bộ (on-device AI), tối ưu hóa thuật toán học máy, xử lý tín hiệu và bảo mật quyền riêng tư trong dữ liệu người dùng.
