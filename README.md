@@ -8,27 +8,27 @@ Research portals hàng đầu của các tập đoàn công nghệ lớn, nơi t
 * Rất mạnh về văn hóa mã nguồn mở. Đây là nơi xuất bản các nghiên cứu xoay quanh dòng mô hình Llama, PyTorch, thị giác máy tính và các kỹ thuật tối ưu hóa AI có tính ứng dụng cao.
 
 
-* **Microsoft Research (MSR)** (`[microsoft.com/en-us/research/](https://microsoft.com/en-us/research/)`)
+**Microsoft Research (MSR)** (`[microsoft.com/en-us/research/](https://microsoft.com/en-us/research/)`)
 * Một trong những viện nghiên cứu công nghiệp lâu đời nhất. MSR bao phủ rộng rãi từ Explainable AI (XAI), Information Retrieval, hệ thống phân tán (Distributed Systems), cho đến tối ưu hóa hiệu suất đám mây.
 
 
-* **OpenAI Research** (`[openai.com/research](https://openai.com/research)`)
+**OpenAI Research** (`[openai.com/research](https://openai.com/research)`)
 * Tập trung chuyên sâu vào các nghiên cứu tiên phong về mô hình ngôn ngữ, đa phương thức (multimodal), và năng lực suy luận của các hệ thống AI (Agentic workflows, RAG, reasoning).
 
 
-* **Amazon Science** (`amazon.science`)
+**Amazon Science** (`amazon.science`)
 * Đặc biệt giá trị cho các nghiên cứu giao thoa giữa AI và Thương mại điện tử. Trang này tập trung nhiều vào các bài báo về hệ thống gợi ý (recommendation systems), xử lý ngôn ngữ tự nhiên cho tìm kiếm sản phẩm, chuỗi cung ứng, và Big Data analytics.
 
 
-* **Apple Machine Learning Research** (`machinelearning.apple.com`)
+**Apple Machine Learning Research** (`machinelearning.apple.com`)
 * Tập trung vào các mô hình AI chạy cục bộ (on-device AI), tối ưu hóa thuật toán học máy, xử lý tín hiệu và bảo mật quyền riêng tư trong dữ liệu người dùng.
 
 
-* **NVIDIA Research** (`[developer.nvidia.com/research](https://developer.nvidia.com/research)`)
+**NVIDIA Research** (`[developer.nvidia.com/research](https://developer.nvidia.com/research)`)
 * Trọng tâm là tối ưu hóa phần cứng cho mạng nơ-ron sâu, đồ họa máy tính, học tăng cường (reinforcement learning) và các hệ thống giả lập môi trường ảo phục vụ cho việc huấn luyện AI.
 
 
-* **IBM Research** (`research.ibm.com`)
+**IBM Research** (`research.ibm.com`)
 * Nổi bật trong các lĩnh vực về điện toán lượng tử (Quantum Computing), kiến trúc lưu trữ dữ liệu lớn, và các nền tảng AI doanh nghiệp an toàn.
 
 
